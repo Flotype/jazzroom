@@ -22,7 +22,6 @@ $(document).ready(function() {
   id = Math.floor(Math.random()*11);
 
   var instrument = 'piano';
-  var playing = false;
   
   $('#players > div').each(function(index, el){
     var id = $(el).attr('id');
@@ -31,17 +30,19 @@ $(document).ready(function() {
     $(el).jPlayer( {
       ready: function () {
         console.log("sounds/"+instrument+"/"+note+".mp3");
-        $(this).jPlayer("setMedia", { mp3: "sounds/"+instrument+"/"+note+".mp3"});
-      }
+        $(this).jPlayer("setMedia", { mp3: "http://ericzhang.com/sounds/"+instrument+"/"+note+".mp3"});
+      },
+      preload: 'auto'
     });
   });
   
   $(document).keyup(function(e){
     var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
     if(note){
-      console.log(note+" stopped");
-      $("#"+instrument+"-"+note).jPlayer("play");
+     
       now.sendNote(instrument, note, id);
+      
+      now.receiveNote(instrument, note, "");
     }
   });
   
@@ -50,9 +51,14 @@ $(document).ready(function() {
 
 now.receiveNote = function (type, note, source) {
 
+  
+    
   if(source == id) {
     return;
   }
+  
+  
+  $("#"+type+"-"+note).jPlayer("play", 0);
   
   var note = $("<div></div>").addClass("note");
 
@@ -69,9 +75,6 @@ now.receiveNote = function (type, note, source) {
   });
   
   $("#disp").append(note);
-  
-  $("#"+type+"-"+note).jPlayer("play");
-  
 }
 
 now.receiveTick = function() {
