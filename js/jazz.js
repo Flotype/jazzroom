@@ -38,7 +38,7 @@ $(document).ready(function() {
   
   $(document).keyup(function(e){
     var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
-    if(note && playing){
+    if(note){
       console.log(note+" stopped");
       $("#"+instrument+"-"+note).jPlayer("play");
       now.sendNote(instrument, note, id);

@@ -2,8 +2,15 @@ var fs = require('fs');
 var server = require('http').createServer(function(req, response){
   fs.readFile('.'+ req.url, function(err, data){
     if(!err) {
-      response.writeHead(200);  
-      response.write(data);  
+      
+      var headers = {};
+      
+      if(req.url.indexOf('.html') !== -1) {
+        headers['Content-Type']= 'text/html';
+      }
+    
+      response.writeHead(200, headers);
+      response.write(data, 'utf8');  
       response.end();
     }
   });
