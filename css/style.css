@@ -1,0 +1,68 @@
+/* CSS Document */
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{font-size:100%;}
+a {outline: none;} /* Gets rid of Firefox's dotted borders */
+a img {border: none;} /* Gets rid of IE's blue borders */
+
+
+html, body {
+  background-color: #f1f6e9;
+}
+
+#wrap {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#head {
+  height: 150px;
+  background: url("../images/logo.png") left center no-repeat;
+}
+
+#main {
+  position: relative;
+  height: 433px;
+}
+
+#instruments {
+  float: left;
+  padding-top: 13px;
+  width: 104px;
+}
+
+#disp {
+  width: 696px;
+  float: left;
+  height: 420px;
+  position: relative;
+}
+
+.mark {
+  width: 0px;
+  height: 420px;
+  border-right: 1px solid #a3a89b;
+}
+
+#cover {
+  position: absolute;
+  width: 124px;
+  height: 557px;
+  background: url('../images/overlay.png') no-repeat;
+  top: -30px;
+  right: 0;
+}
+
+#piano, #bass, #drum {
+  height: 140px;
+}
+
+#piano {
+  background: url('../images/piano.png') no-repeat;
+}
+
+#bass {
+  background: url('../images/bass.png') no-repeat;
+}
+
+#drum {
+  background: url('../images/drum.png') no-repeat;
+}
