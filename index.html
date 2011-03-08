@@ -4,9 +4,6 @@
 <title>Jazzroom - classy js and chill</title> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta http-equiv="Content-Language" content="en-us"> 
-<!--<meta name="description" content="Mixest aims to maximize your exposure to strictly the newest Indie music."> 
-<meta name="keywords" content="music, streaming music, Indie, new, fresh, alternative"> -->
-
  
 <link href="css/style.css" rel="stylesheet" type="text/css"> 
  
@@ -14,6 +11,61 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="js/jazz.js"></script>
+
+<script type="text/javascript">
+
+  var keymap = {
+    a: 'c',
+    w: 'cs',
+    s: 'd',
+    e: 'ds',
+    d: 'e',
+    f: 'f',
+    t: 'fs',
+    g: 'g',
+    y: 'gs',
+    h: 'a',
+    u: 'as',
+    j: 'b'
+  }
+  
+  $(document).ready(function() {
+    var instrument = 'bass';
+    var playing = false;
+    
+    $('#players > div').each(function(index, el){
+      var id = $(el).attr('id');
+      var instrument = id.split('-')[0];
+      var note = id.split('-')[1];
+      $(el).jPlayer( {
+        ready: function () {
+          console.log("sounds/"+instrument+"/"+note+".mp3");
+          $(this).jPlayer("setMedia", { mp3: "sounds/"+instrument+"/"+note+".mp3"});
+        }
+      });
+    });
+    
+    $(document).keypress(function(e){
+      var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
+      if(note && !playing){
+        console.log(note+" started");
+        $("#"+instrument+"-"+note).jPlayer("play");
+        playing = true;
+      }
+    });
+    
+    $(document).keyup(function(e){
+      var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
+      if(note && playing){
+        console.log(note+" stopped");
+        $("#"+instrument+"-"+note).jPlayer("stop");
+        playing = false;
+      }
+    });
+    
+  });
+</script>
+
 </head>
  
 <body>
@@ -30,6 +82,35 @@
     
     </div>
     <div id="cover"></div>
+  </div>
+  <div id="players">
+    <div class="piano" id="piano-c"></div>
+    <div class="piano" id="piano-cs"></div>
+    <div class="piano" id="piano-d"></div>
+    <div class="piano" id="piano-ds"></div>
+    <div class="piano" id="piano-e"></div>
+    <div class="piano" id="piano-f"></div>
+    <div class="piano" id="piano-fs"></div>
+    <div class="piano" id="piano-g"></div>
+    <div class="piano" id="piano-gs"></div>
+    <div class="piano" id="piano-a"></div>
+    <div class="piano" id="piano-as"></div>
+    <div class="piano" id="piano-b"></div>
+    
+    <div class="bass" id="bass-c"></div>
+    <div class="bass" id="bass-cs"></div>
+    <div class="bass" id="bass-d"></div>
+    <div class="bass" id="bass-ds"></div>
+    <div class="bass" id="bass-e"></div>
+    <div class="bass" id="bass-f"></div>
+    <div class="bass" id="bass-fs"></div>
+    <div class="bass" id="bass-g"></div>
+    <div class="bass" id="bass-gs"></div>
+    <div class="bass" id="bass-a"></div>
+    <div class="bass" id="bass-as"></div>
+    <div class="bass" id="bass-b"></div>
+    
+    <div class="snare" id="snare"></div>
   </div>
 </div>
 
