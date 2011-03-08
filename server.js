@@ -1,9 +1,11 @@
 var fs = require('fs');
 var server = require('http').createServer(function(req, response){
   fs.readFile('.'+ req.url, function(err, data){
-    response.writeHead(200);  
-    response.write(data);  
-    response.end();
+    if(!err) {
+      response.writeHead(200);  
+      response.write(data);  
+      response.end();
+    }
   });
 });
 server.listen(8080);
