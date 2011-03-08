@@ -1,20 +1,22 @@
 $(document).ready(function(){
   
-  setInterval(function(){
-    
-    var mark = $("<div></div>").addClass("mark");
-
-    $("#disp").append(mark);
-    
-    mark.animate({left: "696px"}, 3000, 'linear', function(){
-      $(this).fadeOut(200);
-    });
-  
-  }, 2000);
-  
 });
 
-function createNote(type) {
+
+now.drawMark = function(){
+
+  var mark = $("<div></div>").addClass("mark");
+
+  $("#disp").append(mark);
+    
+  mark.animate({left: "696px"}, 3000, 'linear', function(){
+    $(this).fadeOut(200);
+  });
+  
+
+}
+
+now.createNote = function (type) {
 
   var note = $("<div></div>").addClass("note");
 
