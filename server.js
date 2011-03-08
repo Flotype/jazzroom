@@ -10,4 +10,10 @@ server.listen(8080);
 
 
 
-var everyone = require("../../now2/nowServerLib.js").initialize(server);
+var everyone = require("./lib/nowServerLib.js").initialize(server);
+
+setInterval(everyone.now.receiveTick, 2000);
+
+everyone.now.sendNote = function(type, note, source){
+  everyone.now.receiveNote(type, note, source);
+}
