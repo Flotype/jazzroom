@@ -20,8 +20,6 @@ var id;
 $(document).ready(function() {
 
   id = Math.floor(Math.random()*11);
-
-  var instrument = 'piano';
   
   $('#players > div').each(function(index, el){
     var id = $(el).attr('id');
@@ -29,7 +27,6 @@ $(document).ready(function() {
     var note = id.split('-')[1];
     $(el).jPlayer( {
       ready: function () {
-        console.log("sounds/"+instrument+"/"+note+".mp3");
         $(this).jPlayer("setMedia", { mp3: "http://ericzhang.com/sounds/"+instrument+"/"+note+".mp3"});
       },
       preload: 'auto'

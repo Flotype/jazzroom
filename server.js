@@ -15,6 +15,15 @@ app.set('view options', {layout: false});
 app.use(express.errorHandler({ showStack: true, dumpExceptions: true }));
 //
 
+
+app.get('/:i', function(req, res){
+  
+  res.render('index', {locals: {instrument: req.params.i}});
+     
+});
+
+
+
 app.listen(80);
 
 var fs = require('fs');
