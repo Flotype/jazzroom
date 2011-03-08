@@ -30,22 +30,37 @@
   }
   
   $(document).ready(function() {
-    var instrument = 'piano';
+    var instrument = 'bass';
+    var playing = false;
+    
     $('#players > div').each(function(index, el){
       var id = $(el).attr('id');
       var instrument = id.split('-')[0];
       var note = id.split('-')[1];
       $(el).jPlayer( {
         ready: function () {
-          console.log("instruments/"+"bass"+"/"+note+".mp3");
-          $(this).jPlayer("setMedia", { mp3: "instruments/"+"bass"+"/"+note+".mp3"});
-          if(instrument == "piano") $(this).jPlayer("play");
+          console.log("sounds/"+instrument+"/"+note+".mp3");
+          $(this).jPlayer("setMedia", { mp3: "sounds/"+instrument+"/"+note+".mp3"});
         }
       });
     });
     
-    $(document).keydown(function(e){
-       
+    $(document).keypress(function(e){
+      var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
+      if(note && !playing){
+        console.log(note+" started");
+        $("#"+instrument+"-"+note).jPlayer("play");
+        playing = true;
+      }
+    });
+    
+    $(document).keyup(function(e){
+      var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
+      if(note && playing){
+        console.log(note+" stopped");
+        $("#"+instrument+"-"+note).jPlayer("stop");
+        playing = false;
+      }
     });
     
   });
