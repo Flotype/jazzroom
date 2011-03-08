@@ -39,7 +39,15 @@ html, body {
 .mark {
   width: 0px;
   height: 420px;
-  border-right: 1px solid #a3a89b;
+  border-right: 1px dotted #a3a89b;
+  position: absolute;
+}
+
+.note {
+  width: 45px;
+  height: 51px;
+  position: absolute;
+  background: url('../images/note.png') no-repeat;
 }
 
 #cover {
@@ -48,7 +56,8 @@ html, body {
   height: 557px;
   background: url('../images/overlay.png') no-repeat;
   top: -30px;
-  right: 0;
+  border-right: 50px solid #f1f6e9;
+  right: -50px;
 }
 
 #piano, #bass, #drum {
@@ -65,4 +74,23 @@ html, body {
 
 #drum {
   background: url('../images/drum.png') no-repeat;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(-8deg);
+  }
+  50% { 
+    -webkit-transform: rotate(8deg);
+  }
+  100% {
+    -webkit-transform: rotate(-8deg);
+  }
+}
+.note
+{
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         1s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
 }
