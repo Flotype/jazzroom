@@ -19,7 +19,7 @@ var id;
 
 $(document).ready(function() {
 
-  id = Math.floor(Math.random()*11);
+  id = Math.floor(Math.random()*11)+1;
   
   $('#players > div').each(function(index, el){
     var id = $(el).attr('id');

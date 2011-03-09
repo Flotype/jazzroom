@@ -2,9 +2,8 @@ var express = require('express');
 var app =  express.createServer();
 
 // Initialize main server
-app.use(express.bodyDecoder());
 
-app.use(express.staticProvider(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -24,11 +23,11 @@ app.get('/:i', function(req, res){
 
 
 
-app.listen(80);
+app.listen(8080);
 
 var fs = require('fs');
 var server = require('http').createServer();
-server.listen(8080);
+server.listen(3306);
 
 
 
