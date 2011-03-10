@@ -31,10 +31,10 @@ function connected() {
     }
   });
   
-  $("#vailmsg").fadeOut(300, function(){
+  $("#vailmsg").fadeOut(200, function(){
     $(this).text("You're playing the " + instrument);
     $(this).fadeIn(300, function(){
-      $("#vail").delay(700).fadeOut(300).remove();
+      $("#vail").delay(1000).fadeOut(300).remove();
     });
   });
   
