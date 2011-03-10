@@ -78,6 +78,7 @@ html, body {
 
 #vail {
   background-color: #000;
+  font-family: Arial, "Helvetica";
   opacity: 0.8;
   position: absolute;
   width: 100%;
@@ -88,6 +89,7 @@ html, body {
   font-weight: bold;
   font-size: 40px;
 }
+
 
 @-webkit-keyframes rotate {
   0% {
