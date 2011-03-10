@@ -15,7 +15,7 @@ html, body {
 
 #head {
   height: 150px;
-  background: url("../images/logo.png") left center no-repeat;
+  background: url("/images/logo.png") left center no-repeat;
 }
 
 #main {
@@ -47,14 +47,14 @@ html, body {
   width: 45px;
   height: 51px;
   position: absolute;
-  background: url('../images/note.png') no-repeat;
+  background: url('/images/note.png') no-repeat;
 }
 
 #cover {
   position: absolute;
   width: 124px;
   height: 557px;
-  background: url('../images/overlay.png') no-repeat;
+  background: url('/images/overlay.png') no-repeat;
   top: -30px;
   border-right: 50px solid #f1f6e9;
   right: -50px;
@@ -65,15 +65,15 @@ html, body {
 }
 
 #piano {
-  background: url('../images/piano.png') no-repeat;
+  background: url('/images/piano.png') no-repeat;
 }
 
 #bass {
-  background: url('../images/bass.png') no-repeat;
+  background: url('/images/bass.png') no-repeat;
 }
 
 #drum {
-  background: url('../images/drum.png') no-repeat;
+  background: url('/images/drum.png') no-repeat;
 }
 
 @-webkit-keyframes rotate {

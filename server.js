@@ -2,9 +2,9 @@ var express = require('express');
 var app =  express.createServer();
 
 // Initialize main server
-app.use(express.bodyDecoder());
+app.use(express.bodyParser());
 
-app.use(express.staticProvider(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -16,19 +16,19 @@ app.use(express.errorHandler({ showStack: true, dumpExceptions: true }));
 //
 
 
-app.get('/:i', function(req, res){
+app.get('/:room/:instrument', function(req, res){
   
-  res.render('index', {locals: {instrument: req.params.i}});
+  res.render('index', {locals: {instrument: req.params.instrument, room: req.params.room}});
      
 });
 
 
 
-app.listen(80);
+app.listen(8080);
 
 var fs = require('fs');
 var server = require('http').createServer();
-server.listen(8080);
+server.listen(3306);
 
 
 
@@ -38,7 +38,13 @@ everyone.now.receiveTick = function(){};
 
 setInterval(function(){everyone.now.receiveTick();}, 2000);
 
-everyone.now.sendNote = function(type, note, source){
-  everyone.now.receiveNote(type, note, source);
+everyone.now.filterNote = function(type, note, id, room){
+  if(this.now.room == room && this.now.id != id){
+    this.now.receiveNote(type, note);
+  }
+}
+
+everyone.now.sendNote = function(type, note){
+  everyone.now.filterNote(type, note, this.now.id, this.now.room);
 }
 

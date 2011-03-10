@@ -19,7 +19,9 @@ var id;
 
 $(document).ready(function() {
 
-  id = Math.floor(Math.random()*11);
+  id = (new Date()).getTime();
+  now.id = id;
+  now.room = room;
   
   $('#players > div').each(function(index, el){
     var id = $(el).attr('id');
@@ -37,24 +39,16 @@ $(document).ready(function() {
     var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
     if(note){
      
-      now.sendNote(instrument, note, id);
+      now.sendNote(instrument, note);
       
-      now.receiveNote(instrument, note, "");
+      now.receiveNote(instrument, note);
     }
   });
   
   
 });
 
-now.receiveNote = function (type, note, source) {
-
-  
-    
-  if(source == id) {
-    return;
-  }
-  
-  
+now.receiveNote = function (type, note) {
   $("#"+type+"-"+note).jPlayer("play", 0);
   
   var note = $("<div></div>").addClass("note");
