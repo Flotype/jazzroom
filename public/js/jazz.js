@@ -33,8 +33,8 @@ function connected() {
   
   $("#vailmsg").fadeOut(200, function(){
     $(this).text("You're playing the " + instrument);
-    $(this).fadeIn(300, function(){
-      $("#vail").delay(1000).fadeOut(300).remove();
+    $(this).fadeIn(800, function(){
+      $("#vail").fadeOut(300).remove();
     });
   });
   
