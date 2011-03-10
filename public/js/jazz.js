@@ -32,9 +32,11 @@ function connected() {
   });
   
   $("#vailmsg").fadeOut(200, function(){
-    $(this).text("You're playing the " + instrument);
-    $(this).fadeIn(800, function(){
-      $("#vail").fadeOut(300).remove();
+    var img = $("<img />").attr("src", "/images/.png");
+    $(this).text("You're playing the " + instrument).append("<br><br>Click anywhere to start!<br><br>").append(img);
+    $(this).fadeIn(300);
+    $("#vail").click(function(){
+      $(this).fadeOut(300).remove();
     });
   });
   
