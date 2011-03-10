@@ -16,10 +16,22 @@ app.use(express.errorHandler({ showStack: true, dumpExceptions: true }));
 //
 
 
-app.get('/:room/:instrument', function(req, res){
-  
-  res.render('index', {locals: {instrument: req.params.instrument, room: req.params.room}});
-     
+app.get('/', function(req, res){
+  var room = Math.floor(uCount/3);
+  var instrument;
+  switch(uCount%3){
+    case 0:
+      instrument = 'piano';
+      break;
+    case 1:
+      instrument = 'bass';
+      break;
+    case 2:
+      instrument = 'drum';
+      break;
+  }
+  uCount++;
+  res.render('index', {locals: {instrument: instrument, room: room}});
 });
 
 
@@ -35,6 +47,8 @@ server.listen(3306);
 var everyone = require("./lib/nowServerLib.js").initialize(server);
 
 everyone.now.receiveTick = function(){};
+
+uCount = 0;
 
 setInterval(function(){everyone.now.receiveTick();}, 2000);
 
