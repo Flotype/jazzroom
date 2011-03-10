@@ -33,7 +33,7 @@ function connected() {
   
   $("#vailmsg").fadeOut(200, function(){
     var img = $("<img />").attr("src", "/images/.png");
-    $(this).text("You're playing the " + instrument).append("<br><br>Click anywhere to start!<br><br>").append(img);
+    $(this).text("You're playing the " + instrument).append("<br>").append(img).append("Click to start");
     $(this).fadeIn(300);
     $("#vail").click(function(){
       $(this).fadeOut(300).remove();
