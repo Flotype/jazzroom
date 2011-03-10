@@ -88,6 +88,7 @@ html, body {
   color: #fff;
   font-weight: bold;
   font-size: 40px;
+  z-index: 9999;
 }
 
 
