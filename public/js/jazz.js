@@ -1,5 +1,7 @@
 var now = {};
 
+var isConnected = false;
+
 var keymap = {
   a: 'c',
   w: 'cs',
@@ -29,7 +31,12 @@ function connected() {
     }
   });
   
-  $("#vail").fadeOut(300).remove();
+  $("#vailmsg").fadeOut(300, function(){
+    $(this).text("You're playing the " + instrument);
+    $(this).fadeIn(300, function(){
+      $("#vail").delay(500).fadeOut(300).remove();
+    });
+  });
   
 }
 
@@ -76,6 +83,12 @@ now.receiveNote = function (type, note) {
 }
 
 now.receiveTick = function() {
+  
+  if(!isConnected) {
+    connected();
+    isConnected = true;
+  }
+  
   var mark = $("<div></div>").addClass("mark");
 
   $("#disp").append(mark);
