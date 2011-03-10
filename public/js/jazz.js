@@ -17,6 +17,22 @@ var keymap = {
 
 var id;
 
+
+function connected() {
+  $(document).keyup(function(e){
+    var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
+    if(note){
+     
+      now.sendNote(instrument, note);
+      
+      now.receiveNote(instrument, note);
+    }
+  });
+  
+  $("#vail").fadeOut(300).remove();
+  
+}
+
 $(document).ready(function() {
 
   id = (new Date()).getTime();
@@ -35,15 +51,6 @@ $(document).ready(function() {
     });
   });
   
-  $(document).keyup(function(e){
-    var note = keymap[String.fromCharCode(e.keyCode).toLowerCase()];
-    if(note){
-     
-      now.sendNote(instrument, note);
-      
-      now.receiveNote(instrument, note);
-    }
-  });
   
   
 });
