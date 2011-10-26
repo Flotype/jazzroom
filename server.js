@@ -38,13 +38,9 @@ app.get('/', function(req, res){
 
 app.listen(8080);
 
-var fs = require('fs');
-var server = require('http').createServer();
-server.listen(3306);
 
 
-
-var everyone = require("now").initialize(server);
+var everyone = require("now").initialize(app);
 
 everyone.now.receiveTick = function(){};
 
