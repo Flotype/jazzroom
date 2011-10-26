@@ -44,7 +44,7 @@ server.listen(3306);
 
 
 
-var everyone = require("./lib/nowServerLib.js").initialize(server);
+var everyone = require("now").initialize(server);
 
 everyone.now.receiveTick = function(){};
 
