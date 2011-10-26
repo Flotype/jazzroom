@@ -44,6 +44,11 @@ function connected() {
 
 $(document).ready(function() {
 
+  now.ready(function(){
+    connected();
+    isConnected = true;
+  });
+
   id = (new Date()).getTime();
   now.id = id;
   now.room = room;
@@ -85,11 +90,6 @@ now.receiveNote = function (type, note) {
 }
 
 now.receiveTick = function() {
-  
-  if(!isConnected) {
-    connected();
-    isConnected = true;
-  }
   
   var mark = $("<div></div>").addClass("mark");
 
