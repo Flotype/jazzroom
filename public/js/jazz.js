@@ -1,5 +1,3 @@
-var now = {};
-
 var isConnected = false;
 
 var keymap = {
@@ -48,6 +46,7 @@ $(document).ready(function() {
     connected();
     isConnected = true;
   });
+  
 
   id = (new Date()).getTime();
   now.id = id;
@@ -83,7 +82,7 @@ now.receiveNote = function (type, note) {
   }  
   
   note.animate({left: "696px"}, 3000, 'linear', function(){
-      $(this).fadeOut(200);
+    $(this).fadeOut(200);
   });
   
   $("#disp").append(note);
